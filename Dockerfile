@@ -1,17 +1,18 @@
-FROM debian:stretch
+FROM debian:buster
 
 MAINTAINER Christian Luginbühl <dinkel@pimprecords.com>
+MAINTAINER ConstantinWildförster <constantin@wildfoerster.org>
 
-ENV CLAMAV_VERSION 0.100
+ENV CLAMAV_VERSION 0.102
 
-RUN echo "deb http://http.debian.net/debian/ stretch main contrib non-free" > /etc/apt/sources.list && \
-    echo "deb http://http.debian.net/debian/ stretch-updates main contrib non-free" >> /etc/apt/sources.list && \
-    echo "deb http://security.debian.org/ stretch/updates main contrib non-free" >> /etc/apt/sources.list && \
+RUN echo "deb http://http.debian.net/debian/ buster main contrib non-free" > /etc/apt/sources.list && \
+    echo "deb http://http.debian.net/debian/ buster-updates main contrib non-free" >> /etc/apt/sources.list && \
+    echo "deb http://security.debian.org/ buster/updates main contrib non-free" >> /etc/apt/sources.list && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
         clamav-daemon=${CLAMAV_VERSION}* \
         clamav-freshclam=${CLAMAV_VERSION}* \
-        libclamunrar7 \
+#        libclamunrar7 \
         wget && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
