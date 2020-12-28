@@ -13,7 +13,8 @@ RUN echo "deb http://http.debian.net/debian/ buster main contrib non-free" > /et
         clamav-daemon=${CLAMAV_VERSION}* \
         clamav-freshclam=${CLAMAV_VERSION}* \
         libclamunrar9 libclamunrar \
-        wget && \
+        ca-certificates \
+        wget curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
