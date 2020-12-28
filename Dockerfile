@@ -12,7 +12,7 @@ RUN echo "deb http://http.debian.net/debian/ buster main contrib non-free" > /et
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
         clamav-daemon=${CLAMAV_VERSION}* \
         clamav-freshclam=${CLAMAV_VERSION}* \
-#        libclamunrar7 \
+        libclamunrar9 libclamunrar \
         wget && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
